@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Know Your Rights</title>
+    <script>
+      // Single Page App routing for GitHub Pages
+      // Redirects all 404s to index.html with the path preserved
+      const path = window.location.pathname;
+      const search = window.location.search;
+      const hash = window.location.hash;
+
+      // Redirect to the main page with the path as a query param
+      // The app will handle restoring the correct state
+      if (path !== '/' && path !== '/index.html') {
+        const params = new URLSearchParams(search);
+        // Preserve any existing lang param
+        const redirectUrl = '/' + (params.toString() ? '?' + params.toString() : '') + hash;
+        window.location.replace(redirectUrl);
+      }
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>

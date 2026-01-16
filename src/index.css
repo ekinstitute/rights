@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Print styles */
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  .prose {
+    max-width: none;
+  }
+
+  .prose h2 {
+    page-break-after: avoid;
+  }
+
+  .prose ul {
+    page-break-inside: avoid;
+  }
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #3b82f6;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  .prose a {
+    text-decoration: underline !important;
+  }
+
+  button, select {
+    border-width: 2px !important;
+  }
+}
+
+/* Ensure text scales with user zoom preferences */
+html {
+  font-size: 100%;
+}
+
+/* Minimum touch target size (44x44px) */
+@media (pointer: coarse) {
+  button, select, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
